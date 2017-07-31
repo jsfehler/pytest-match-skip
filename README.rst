@@ -20,7 +20,10 @@ This `Pytest`_ plugin was generated with `Cookiecutter`_ along with `@hackebrot`
 Features
 --------
 
-* TODO
+* Allows any tag to be used for a skip or xfail
+* Wildcards can be used for tags with variable parts (ie: Specify bug_.* for bug_123, bug_777) 
+* Important tags can be specified and the user will be warned when they're skipped
+* Tags that should be skipped can be forced to run anyways 
 
 
 Requirements
