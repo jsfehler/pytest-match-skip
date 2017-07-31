@@ -43,7 +43,21 @@ You can install "pytest-match-skip" via `pip`_ from `PyPI`_::
 Usage
 -----
 
-* TODO
+* The following options can be added to a pytest.ini file:
+    - skip_marks: List of marks that will be detected 
+    - important_marks: List of marks that will warn the user if skipped
+    - run_skips: true or false to run tests with a skip mark
+    - xfail_skips: true or false to xfail instead of skip the marked tests
+
+    Example:
+
+    .. code-block:: none
+
+        [pytest]
+        skip_marks = bug_.* .*_tracker .*_known_failure_.*
+        important_marks = smoke .*_sanity important_.*
+        run_skips = false
+        xfail_skips = false
 
 Contributing
 ------------
