@@ -51,7 +51,7 @@ Usage
 
     Example:
 
-    .. code-block:: none
+    .. code-block:: python
 
         [pytest]
         skip_marks = bug_.* .*_tracker .*_known_failure_.*
