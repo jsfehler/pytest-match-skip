@@ -10,6 +10,9 @@ pytest-match-skip
     :target: https://ci.appveyor.com/project/jsfehler/pytest-match-skip/branch/master
     :alt: See Build Status on AppVeyor
 
+.. image:: https://badge.fury.io/py/pytest-match-skip.svg
+    :target: https://badge.fury.io/py/pytest-match-skip
+
 Skip matching marks. Matches partial marks using wildcards.
 
 ----
