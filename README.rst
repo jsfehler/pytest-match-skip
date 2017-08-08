@@ -26,12 +26,6 @@ Features
 * Tags that should be skipped can be forced to run anyways
 
 
-Requirements
-------------
-
-* TODO
-
-
 Installation
 ------------
 
@@ -43,6 +37,8 @@ You can install "pytest-match-skip" via `pip`_ from `PyPI`_::
 Usage
 -----
 
+pytest ini options
+==================
 * The following options can be added to a pytest.ini file:
     - skip_marks: List of marks that will be detected
     - important_marks: List of marks that will warn the user if skipped
@@ -58,6 +54,15 @@ Usage
         important_marks = smoke .*_sanity important_.*
         run_skips = false
         xfail_skips = false
+
+Hooks
+=====
+The following pytest hooks are available:
+
+- pytest_match_skip_reason(request, message) - Called if a test is skipped
+- pytest_match_skip_run_skip_warning(request, message) - Called if run_skips is true and a test would otherwise be skipped.
+- pytest_match_skip_important_warning(request, message) - Called when important_marks are skipped
+
 
 Contributing
 ------------
