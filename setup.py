@@ -13,7 +13,7 @@ def read(fname):
 
 setup(
     name='pytest-match-skip',
-    version='0.1.0',
+    version='0.1.1',
     author='Joshua Fehler',
     author_email='jsfehler@gmail.com',
     maintainer='Joshua Fehler',
