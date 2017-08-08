@@ -13,7 +13,7 @@ def read(fname):
 
 setup(
     name='pytest-match-skip',
-    version='0.0.1',
+    version='0.1.0',
     author='Joshua Fehler',
     author_email='jsfehler@gmail.com',
     maintainer='Joshua Fehler',
@@ -22,7 +22,7 @@ setup(
     url='https://github.com/jsfehler/pytest-match-skip',
     description='Skip matching marks. Matches partial marks using wildcards.',
     long_description=read('README.rst'),
-    py_modules=['pytest_match_skip'],
+    packages=['pytest_match_skip'],
     install_requires=['pytest>=3.1.1'],
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -43,7 +43,7 @@ setup(
     ],
     entry_points={
         'pytest11': [
-            'match-skip = pytest_match_skip',
+            'match-skip = pytest_match_skip.plugin',
         ],
     },
 )

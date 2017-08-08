@@ -6,11 +6,6 @@ import pytest
 from _pytest.mark import MarkInfo
 
 
-def _log_mark_messages(message):
-    """A non-default implementation of this could use a logger instead."""
-    print(message)
-
-
 def __matches_in_test_marks(mark_list, test_marks):
     matches = []
     for mark in mark_list:
@@ -23,6 +18,7 @@ def __matches_in_test_marks(mark_list, test_marks):
 
 
 def _check_skip_prefixes(item):
+    """Checks a test item for any skip marks."""
     reason = None
 
     all_skip_marks = item.config.getini('skip_marks')
@@ -55,23 +51,51 @@ def _check_skip_prefixes(item):
     else:
         return
 
-    # If User wants to run tests that are normally skipped
     if item.config.getini('run_skips') == 'true':
         msg = ('Running {item.name} despite the following skip marks:'
                ' {str_matches}.')
-        _log_mark_messages(msg.format(**locals()))
+        item.config.hook.pytest_match_skip_run_skip_warning(
+            request=item,
+            message=msg.format(**locals())
+        )
         return
 
     if len(important_marks) > 0:
         msg = ('Skipping {item.name} despite the following important marks:'
                ' {str_important_marks}')
-        _log_mark_messages(msg.format(**locals()))
+        item.config.hook.pytest_match_skip_important_warning(
+            request=item,
+            message=msg.format(**locals())
+        )
 
-    _log_mark_messages(reason)
+    item.config.hook.pytest_match_skip_reason(request=item, message=reason)
+
     if item.config.getini('xfail_skips') == 'true':
         pytest.xfail(reason)
     else:
         pytest.skip(reason)
+
+
+def pytest_addhooks(pluginmanager):
+    """Register plugin hooks."""
+    from pytest_match_skip import hooks
+    pluginmanager.add_hookspecs(hooks)
+
+
+# Default implementations of the hooks
+def pytest_match_skip_reason(request, message):
+    """The reason the test was caught by match_skip."""
+    print(message)
+
+
+def pytest_match_skip_run_skip_warning(request, message):
+    """The warning message when running tests that should be skipped."""
+    print(message)
+
+
+def pytest_match_skip_important_warning(request, message):
+    """The warning message when skipping important tests."""
+    print(message)
 
 
 def pytest_runtest_setup(item):
