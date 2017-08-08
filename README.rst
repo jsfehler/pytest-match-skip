@@ -1,4 +1,3 @@
-=================
 pytest-match-skip
 =================
 
@@ -34,14 +33,14 @@ Installation
 
 You can install "pytest-match-skip" via `pip`_ from `PyPI`_::
 
-    $ pip install pytest-match-skip
+    pip install pytest-match-skip
 
 
 Usage
 -----
 
 pytest ini options
-==================
+^^^^^^^^^^^^^^^^^^
 * The following options can be added to a pytest.ini file:
     - skip_marks: List of marks that will be detected
     - important_marks: List of marks that will warn the user if skipped
@@ -59,7 +58,7 @@ pytest ini options
         xfail_skips = false
 
 Hooks
-=====
+^^^^^
 The following pytest hooks are available:
 
 - pytest_match_skip_reason(request, message) - Called if a test is skipped
