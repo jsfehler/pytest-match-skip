@@ -33,15 +33,37 @@ def pytest_addoption(parser):
         'skip_marks',
         'Tests with a matching mark will be skipped'
     )
+    parser.addoption(
+        '--skip_marks',
+        type=str,
+        action='append',
+        help='Tests with a matching mark will be skipped'
+    )
     parser.addini(
         'important_marks',
         'User will be warned if tests with this tag are skipped.'
+    )
+    parser.addoption(
+        '--important_marks',
+        type=str,
+        action='append',
+        help='User will be warned if tests with this tag are skipped.'
     )
     parser.addini(
         'run_skips',
         'If true, runs tests that are tagged for skipping.'
     )
+    parser.addoption(
+        '--run_skips',
+        type=bool,
+        help='If true, runs tests that are tagged for skipping.'
+    )
     parser.addini(
         'xfail_skips',
         'Instead of skipping, xfail the tagged tests'
+    )
+    parser.addoption(
+        '--xfail_skips',
+        type=bool,
+        help='Instead of skipping, xfail the tagged tests'
     )
