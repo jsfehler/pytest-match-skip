@@ -18,7 +18,7 @@ def __matches_in_test_marks(mark_list, test_marks):
 
 
 def __get_param(config, name):
-    """ Retrieve stringified option from parameters or ini config. """
+    """Retrieve stringified option from parameters or ini config."""
     value = config.getoption(name)
     if value and isinstance(value, list):
         return ' '.join(value)
@@ -57,8 +57,9 @@ def check_skip_prefixes(item):
         reason = msg.format(**locals())
 
         # The test will be skipped, now check the important marks
-        all_important_marks = __get_param(item.config,
-                                          'important_marks').split(' ')
+        all_important_marks = __get_param(
+            item.config, 'important_marks'
+        ).split(' ')
         important_marks = __matches_in_test_marks(
             all_important_marks, test_marks
         )
