@@ -39,6 +39,15 @@ You can install "pytest-match-skip" via `pip`_ from `PyPI`_::
 Usage
 -----
 
+command line options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* The following pytest options can be used on the command line:
+    - --skip_marks
+    - --important_marks
+    - --run_skips
+    - --xfail_skips
+
+
 pytest ini options
 ^^^^^^^^^^^^^^^^^^
 * The following options can be added to a pytest.ini file:
