@@ -1,6 +1,18 @@
 pytest-match-skip
 =================
 
+.. image:: https://img.shields.io/pypi/v/pytest-match-skip.svg
+    :target: https://pypi.org/project/pytest-match-skip
+    :alt: PyPI
+
+.. image:: https://img.shields.io/pypi/pyversions/pytest-match-skip.svg
+    :alt: PyPI - Python Version
+    :target: https://github.com/jsfehler/pytest-match-skip
+
+.. image:: https://img.shields.io/github/license/jsfehler/pytest-match-skip.svg
+    :alt: GitHub
+    :target: https://github.com/jsfehler/pytest-match-skip/blob/master/LICENSE
+
 .. image:: https://travis-ci.org/jsfehler/pytest-match-skip.svg?branch=master
     :target: https://travis-ci.org/jsfehler/pytest-match-skip
     :alt: See Build Status on Travis CI
@@ -9,8 +21,6 @@ pytest-match-skip
     :target: https://ci.appveyor.com/project/jsfehler/pytest-match-skip/branch/master
     :alt: See Build Status on AppVeyor
 
-.. image:: https://badge.fury.io/py/pytest-match-skip.svg
-    :target: https://badge.fury.io/py/pytest-match-skip
 
 Skip matching marks. Matches partial marks using wildcards.
 
