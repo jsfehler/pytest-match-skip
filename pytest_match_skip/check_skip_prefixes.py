@@ -2,11 +2,12 @@
 
 import re
 
-import pytest
 from _pytest.mark import MarkInfo
 
+import pytest
 
-def __matches_in_test_marks(mark_list, test_marks):
+
+def _matches_in_test_marks(mark_list, test_marks):
     matches = []
     for mark in mark_list:
         for test_mark in test_marks:
@@ -17,7 +18,7 @@ def __matches_in_test_marks(mark_list, test_marks):
     return matches
 
 
-def __get_param(config, name):
+def _get_param(config, name):
     """Retrieve stringified option from parameters or ini config."""
     value = config.getoption(name)
     if value and isinstance(value, list):
@@ -36,7 +37,7 @@ def check_skip_prefixes(item):
     """Checks a test item for any skip marks."""
     reason = None
 
-    all_skip_marks = __get_param(item.config, 'skip_marks')
+    all_skip_marks = _get_param(item.config, 'skip_marks')
 
     if all_skip_marks == '':
         # No skip_marks were found.
@@ -50,17 +51,17 @@ def check_skip_prefixes(item):
     ]
 
     # Check if one of the marks on the test matches a skip_mark
-    matches = __matches_in_test_marks(all_skip_marks, test_marks)
+    matches = _matches_in_test_marks(all_skip_marks, test_marks)
     if len(matches) > 0:
         str_matches = ', '.join(matches)
         msg = 'Skipping {item.name} due to marks: {str_matches}'
         reason = msg.format(**locals())
 
         # The test will be skipped, now check the important marks
-        all_important_marks = __get_param(
+        all_important_marks = _get_param(
             item.config, 'important_marks'
         ).split(' ')
-        important_marks = __matches_in_test_marks(
+        important_marks = _matches_in_test_marks(
             all_important_marks, test_marks
         )
         str_important_marks = ', '.join(important_marks)
@@ -68,7 +69,7 @@ def check_skip_prefixes(item):
     else:
         return
 
-    if __get_param(item.config, 'run_skips') == 'true':
+    if _get_param(item.config, 'run_skips') == 'true':
         msg = ('Running {item.name} despite the following skip marks:'
                ' {str_matches}.')
         item.config.hook.pytest_match_skip_run_skip_warning(
@@ -87,7 +88,7 @@ def check_skip_prefixes(item):
 
     item.config.hook.pytest_match_skip_reason(request=item, message=reason)
 
-    if __get_param(item.config, 'xfail_skips') == 'true':
+    if _get_param(item.config, 'xfail_skips') == 'true':
         pytest.xfail(reason)
     else:
         pytest.skip(reason)
