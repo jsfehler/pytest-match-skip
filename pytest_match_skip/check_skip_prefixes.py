@@ -2,8 +2,6 @@
 
 import re
 
-from _pytest.mark import MarkInfo
-
 import pytest
 
 
@@ -46,9 +44,7 @@ def check_skip_prefixes(item):
     all_skip_marks = all_skip_marks.split(' ')
 
     # Get the marks used on the test.
-    test_marks = [
-        k for k, v in item.keywords.items() if isinstance(v, MarkInfo)
-    ]
+    test_marks = [mark.name for mark in item.iter_markers()]
 
     # Check if one of the marks on the test matches a skip_mark
     matches = _matches_in_test_marks(all_skip_marks, test_marks)

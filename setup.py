@@ -24,7 +24,7 @@ setup(
     description='Skip matching marks. Matches partial marks using wildcards.',
     long_description=read('README.rst'),
     packages=['pytest_match_skip'],
-    install_requires=['pytest>=3.6.1'],
+    install_requires=['pytest>=4.4.1'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Framework :: Pytest',
