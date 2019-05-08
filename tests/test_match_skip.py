@@ -76,10 +76,10 @@ def test_prefix_skipping_should_skip(testdir):
 
     # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines([
-        '*::test_prefix_skipping SKIPPED',
-        '*::test_multiple_prefix_skipping SKIPPED',
-        '*::test_prefix_suffix_skipping SKIPPED',
-        '*::test_important_skipped SKIPPED',
+        '*::test_prefix_skipping SKIPPED*',
+        '*::test_multiple_prefix_skipping SKIPPED*',
+        '*::test_prefix_suffix_skipping SKIPPED*',
+        '*::test_important_skipped SKIPPED*',
     ])
 
     # make sure that that we get a '0' exit code for the testsuite
@@ -176,10 +176,10 @@ def test_prefix_skipping_should_skip_options(testdir):
 
     # fnmatch_lines does an assertion internally
     result.stdout.fnmatch_lines([
-        '*::test_prefix_skipping SKIPPED',
-        '*::test_multiple_prefix_skipping SKIPPED',
-        '*::test_prefix_suffix_skipping SKIPPED',
-        '*::test_important_skipped SKIPPED',
+        '*::test_prefix_skipping SKIPPED*',
+        '*::test_multiple_prefix_skipping SKIPPED*',
+        '*::test_prefix_suffix_skipping SKIPPED*',
+        '*::test_important_skipped SKIPPED*',
     ])
 
     # make sure that that we get a '0' exit code for the testsuite
