@@ -50,7 +50,7 @@ Usage
 -----
 
 command line options
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 * The following pytest options can be used on the command line:
     - --skip_marks
     - --important_marks

@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import codecs
 import os
 
 from setuptools import setup
@@ -9,12 +8,13 @@ from setuptools import setup
 
 def read(fname):
     file_path = os.path.join(os.path.dirname(__file__), fname)
-    return codecs.open(file_path, encoding='utf-8').read()
+    with open(file_path, 'r') as f:
+        return f.read()
 
 
 setup(
     name='pytest-match-skip',
-    version='0.2.0',
+    version='0.2.1',
     author='Joshua Fehler',
     author_email='jsfehler@gmail.com',
     maintainer='Joshua Fehler',
